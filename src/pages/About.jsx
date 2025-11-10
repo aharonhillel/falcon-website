@@ -5,28 +5,22 @@ import { Award, Heart, Target, Users, CheckCircle } from "lucide-react";
 export default function About() {
   const team = [
     {
-      name: "Sarah Mitchell",
-      role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
-      bio: "With over 15 years in event management, Sarah brings vision and excellence to every project."
-    },
-    {
-      name: "James Cooper",
-      role: "Director of Operations",
+      name: "Ronen Rahamim",
+      role: "Managing Director / CEO",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-      bio: "James ensures seamless execution with his meticulous attention to detail and logistics expertise."
+      bio: "Leading Falcon Group's mission to deliver world-class medical conferences and events."
     },
     {
-      name: "Emma Richardson",
-      role: "Creative Director",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
-      bio: "Emma transforms ideas into stunning visual experiences that captivate and inspire."
-    },
-    {
-      name: "Michael Chen",
-      role: "Client Relations Manager",
+      name: "Prof. Itamar Raz",
+      role: "CODHy Conference Co-Chair",
       image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80",
-      bio: "Michael builds lasting partnerships through exceptional service and understanding client needs."
+      bio: "Medical Director at the Diabetes Medical Center in Tel Aviv and Head of the Israeli Council of Diabetes."
+    },
+    {
+      name: "Prof. Ning Guang",
+      role: "CODHy Conference Co-Chair",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+      bio: "Academician of Chinese Academy of Engineering and President of Ruijin Hospital, Shanghai Jiaotong University."
     }
   ];
 
@@ -34,42 +28,42 @@ export default function About() {
     {
       icon: Target,
       title: "Excellence",
-      description: "We strive for perfection in every detail, ensuring your event exceeds expectations."
+      description: "Presenting the highest level of academic conferences with world-leading medical experts and Nobel laureates."
     },
     {
       icon: Heart,
-      title: "Passion",
-      description: "Our love for creating memorable experiences drives everything we do."
+      title: "Professional Performance",
+      description: "Delivering high-quality, personalized meeting experiences from small advisory boards to large international conferences."
     },
     {
       icon: Users,
-      title: "Collaboration",
-      description: "We work closely with clients and partners to bring visions to life."
+      title: "Global Reach",
+      description: "Attracting participants from over 70 countries worldwide with our premier medical conferences."
     },
     {
       icon: Award,
-      title: "Innovation",
-      description: "We embrace creativity and technology to deliver cutting-edge event solutions."
+      title: "Scientific Integrity",
+      description: "Ensuring the highest academic standards with guidance from renowned medical experts globally."
     }
   ];
 
   const achievements = [
-    "Over 500 successful events delivered",
-    "98% client satisfaction rate",
-    "Trusted by Fortune 500 companies",
-    "Award-winning event design",
-    "15+ years of industry experience",
-    "International event capabilities"
+    "Over 300 medical conferences organized successfully",
+    "30,000+ medical professionals reached through CODHy conferences",
+    "Partnerships with leading pharmaceutical companies worldwide",
+    "17 years of CODHy conference excellence",
+    "International Congress of Endocrinology (ICE) with 8,000 participants",
+    "Nobel Laureates as guest speakers"
   ];
 
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-[#0A1F3D] to-[#0D2847] text-white overflow-hidden">
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-[#6B21A8] to-[#4C1D95] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
-            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=80"
-            alt="Team"
+            src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1600&q=80"
+            alt="Medical Conference"
             className="w-full h-full object-cover"
           />
         </div>
@@ -84,7 +78,7 @@ export default function About() {
               About Falcon Events Limited
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Creating extraordinary experiences through innovative event management and unwavering dedication to excellence
+              Professional Medical Event Organizer - A Subsidiary of Falcon Group
             </p>
           </motion.div>
         </div>
@@ -103,13 +97,13 @@ export default function About() {
                 Our Mission
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                At Falcon Events Limited, we believe that every event is an opportunity to create something extraordinary. Our mission is to transform your vision into reality through meticulous planning, creative excellence, and flawless execution.
+                The professionalism of Falcon Group and Taixi Congress is to present the highest quality academic conferences and output the conference contents of the highest academic level. Our professional performance benefits from the guidance and support of renowned medical experts from around the world.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Whether it's a high-profile corporate conference, an intimate executive meeting, or a large-scale medical symposium, we bring the same level of dedication and expertise to every project we undertake.
+                Whether it is a small meeting with dozens of people or a large meeting with thousands of people, Taixi Congress can provide attendees with a high-quality and personalized meeting experience.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Founded on the principles of innovation, integrity, and exceptional service, we've built our reputation by consistently delivering events that not only meet but exceed our clients' expectations.
+                Since our establishment in 2004, we have successfully organized many medical conferences in China and across Asia including Hong Kong, Macau, Thailand, Vietnam, Philippines, and beyond. We work with world-leading medical experts in their fields and Nobel laureate guest speakers to ensure our medical conferences are at the highest scientific level.
               </p>
             </motion.div>
 
@@ -120,8 +114,8 @@ export default function About() {
               className="relative"
             >
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-                alt="Team meeting"
+                src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80"
+                alt="Medical Conference"
                 className="rounded-2xl shadow-2xl"
               />
             </motion.div>
@@ -142,7 +136,7 @@ export default function About() {
               Our Values
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              The principles that guide everything we do
+              The principles that guide our medical event management
             </p>
           </motion.div>
 
@@ -156,8 +150,8 @@ export default function About() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white p-8 rounded-2xl shadow-lg text-center"
               >
-                <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="w-8 h-8 text-yellow-600" />
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <value.icon className="w-8 h-8 text-purple-600" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{value.description}</p>
@@ -177,14 +171,14 @@ export default function About() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Meet Our Team
+              Leadership Team
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Experienced professionals dedicated to making your event unforgettable
+              Experienced leaders dedicated to delivering world-class medical conferences
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {team.map((member, index) => (
               <motion.div
                 key={index}
@@ -203,7 +197,7 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-yellow-600 font-medium mb-3">{member.role}</p>
+                <p className="text-purple-600 font-medium mb-3">{member.role}</p>
                 <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
@@ -212,7 +206,7 @@ export default function About() {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-24 bg-gradient-to-br from-[#0A1F3D] to-[#0D2847] text-white">
+      <section className="py-24 bg-gradient-to-br from-[#6B21A8] to-[#4C1D95] text-white">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -224,7 +218,7 @@ export default function About() {
               Our Achievements
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              A track record of excellence and innovation
+              A track record of excellence in medical event management
             </p>
           </motion.div>
 

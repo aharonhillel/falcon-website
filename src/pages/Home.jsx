@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { motion } from "framer-motion";
-import { ArrowRight, Award, Users, Target, Sparkles } from "lucide-react";
+import { ArrowRight, Award, Users, Target, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,7 +20,6 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
     setTimeout(() => {
       toast.success("Thank you! We'll be in touch soon.");
       setFormData({ name: "", email: "", company: "", message: "" });
@@ -31,59 +29,59 @@ export default function Home() {
 
   const portfolioItems = [
     {
-      title: "Product Launch",
-      client: "Innovation Corp",
+      title: "CODHy Asia Pacific",
+      client: "International Conference",
       image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-      category: "Corporate"
+      category: "Medical"
     },
     {
-      title: "Annual General Meeting",
-      client: "Summit Inc",
+      title: "ICE Beijing 2016",
+      client: "International Congress of Endocrinology",
       image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80",
-      category: "Corporate"
+      category: "Medical"
     },
     {
-      title: "Incentive Trip",
-      client: "Ace Adventures",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
-      category: "Incentive"
-    },
-    {
-      title: "Product Launch",
-      client: "FutureTech",
-      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80",
-      category: "Corporate"
-    },
-    {
-      title: "Medical Conference",
-      client: "Global Trust",
+      title: "CMDA Conference",
+      client: "Chinese Medical Doctor Association",
       image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80",
       category: "Medical"
     },
     {
-      title: "Incentive Trip",
-      client: "Horizon Partners",
-      image: "https://images.unsplash.com/photo-1530023367847-a683933f4172?w=800&q=80",
-      category: "Incentive"
+      title: "CODHy World Congress",
+      client: "Global Conference",
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80",
+      category: "Medical"
+    },
+    {
+      title: "COPHY Congress",
+      client: "Controversies in Ophthalmology",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+      category: "Medical"
+    },
+    {
+      title: "DIP Symposium",
+      client: "Diabetes & Pregnancy",
+      image: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80",
+      category: "Medical"
     }
   ];
 
   const services = [
     {
-      title: "Venue Sourcing",
-      description: "Finding the perfect location that aligns with your vision, goals and budget."
+      title: "Conference Planning",
+      description: "Complete congress organization from venue selection to scientific program management."
     },
     {
       title: "A/V & Production",
-      description: "State-of-the-art technical solutions to bring your event to life."
+      description: "State-of-the-art technical solutions for medical conferences and virtual events."
     },
     {
-      title: "Delegate Management",
-      description: "Seamless registration, communications, and on-site support for all attendees."
+      title: "Faculty Management",
+      description: "Expert coordination, communication, and translation services for international speakers."
     },
     {
-      title: "Branding & Design",
-      description: "Creative and impactful visual identity that makes your event unforgettable."
+      title: "Exhibition Services",
+      description: "Professional exhibition management for pharmaceutical and medical device companies."
     }
   ];
 
@@ -91,11 +89,11 @@ export default function Home() {
     <div className="bg-white">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1F3D] via-[#0D2847] to-[#0A1F3D]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#6B21A8] via-[#7C3AED] to-[#6B21A8]">
           <div className="absolute inset-0 opacity-20">
             <img
-              src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&q=80"
-              alt="Event"
+              src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1600&q=80"
+              alt="Medical Event"
               className="w-full h-full object-cover"
             />
           </div>
@@ -108,21 +106,20 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Crafting Unforgettable<br />Corporate Experiences
+              Professional Medical<br />Event Organizer
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              From dynamic product launches to corporate annual meetings, we take your vision to reality
+            <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Presenting the highest level of academic conferences with world-leading medical experts and Nobel laureates
             </p>
             <Link to={createPageUrl("Contact")}>
               <Button className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-8 py-6 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300">
-                Plan Your Event
+                Plan Your Conference
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           </motion.div>
         </div>
 
-        {/* Decorative element */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
@@ -131,10 +128,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Award, number: "300+", label: "Events Delivered" },
-              { icon: Users, number: "50K+", label: "Attendees Managed" },
-              { icon: Target, number: "98%", label: "Client Satisfaction" },
-              { icon: Sparkles, number: "15+", label: "Years Experience" }
+              { icon: Award, number: "300+", label: "Medical Conferences" },
+              { icon: Users, number: "30K+", label: "Medical Professionals" },
+              { icon: Target, number: "70+", label: "Countries Reached" },
+              { icon: Globe, number: "17+", label: "Years of CODHy" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -144,7 +141,7 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <stat.icon className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
+                <stat.icon className="w-12 h-12 text-purple-600 mx-auto mb-4" />
                 <div className="text-4xl font-bold text-gray-900 mb-2">{stat.number}</div>
                 <div className="text-gray-600">{stat.label}</div>
               </motion.div>
@@ -163,10 +160,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our Portfolio
+              Featured Medical Conferences
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore a selection of corporate events we've meticulously planned and executed
+              Explore our portfolio of world-class medical conferences and academic events
             </p>
           </motion.div>
 
@@ -210,10 +207,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our Corporate Event Services
+              Our Medical Event Services
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              End-to-end solutions for a flawless event experience
+              Comprehensive solutions for medical conferences and academic events
             </p>
           </motion.div>
 
@@ -236,7 +233,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section with Contact Form */}
-      <section className="py-24 bg-gradient-to-br from-[#0A1F3D] to-[#0D2847] text-white">
+      <section className="py-24 bg-gradient-to-br from-[#6B21A8] to-[#4C1D95] text-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -245,10 +242,10 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Ready to Elevate Your Next Event?
+                Ready to Organize Your Next Medical Conference?
               </h2>
               <p className="text-xl text-gray-300 leading-relaxed">
-                Let us plan your next event and create something remarkable that leaves a lasting impression. We're here to make your vision a corporate event that exceeds expectations.
+                Let us help you create a world-class medical conference that brings together leading experts and advances medical knowledge. From small advisory board meetings to large international congresses, we deliver excellence.
               </p>
             </motion.div>
 
@@ -275,13 +272,13 @@ export default function Home() {
                   className="bg-white/20 border-white/30 text-white placeholder:text-gray-300"
                 />
                 <Input
-                  placeholder="Company Name"
+                  placeholder="Organization/Institution"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   className="bg-white/20 border-white/30 text-white placeholder:text-gray-300"
                 />
                 <Textarea
-                  placeholder="Tell us about your event..."
+                  placeholder="Tell us about your conference..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required

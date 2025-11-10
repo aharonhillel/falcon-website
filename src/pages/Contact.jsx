@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
-    company: "",
+    organization: "",
     eventType: "",
     attendees: "",
     date: "",
@@ -23,14 +23,13 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     setTimeout(() => {
       toast.success("Thank you for your inquiry! We'll be in touch within 24 hours.");
       setFormData({
         name: "",
         email: "",
         phone: "",
-        company: "",
+        organization: "",
         eventType: "",
         attendees: "",
         date: "",
@@ -42,19 +41,19 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: MapPin,
-      title: "Office Location",
-      details: ["123 Event Plaza", "London EC2A 4NE", "United Kingdom"]
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      details: ["+44 (0) 20 1234 5678", "+44 (0) 20 1234 5679"]
+      icon: User,
+      title: "Managing Director",
+      details: ["Ronen Rahamim", "CEO, Falcon Group"]
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["hello@falconevents.co.uk", "info@falconevents.co.uk"]
+      details: ["rrahamim@gmail.com", "info@falconevents.co.uk"]
+    },
+    {
+      icon: MapPin,
+      title: "Office Location",
+      details: ["Shanghai, China", "London, United Kingdom"]
     },
     {
       icon: Clock,
@@ -63,10 +62,19 @@ export default function Contact() {
     }
   ];
 
+  const keyPartners = [
+    "Chinese Medical Doctor Association (CMDA)",
+    "Chinese Society of Endocrinology (CSE)",
+    "Chinese Medical Association (CEA)",
+    "International Society of Endocrinology (ISE)",
+    "Chinese Academy of Engineering (CAE)",
+    "Ruijin Hospital, Shanghai Jiaotong University"
+  ];
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-[#0A1F3D] to-[#0D2847] text-white overflow-hidden">
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-[#6B21A8] to-[#4C1D95] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
             src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80"
@@ -82,10 +90,10 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Let's Start Planning
+              Let's Organize Your Conference
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Get in touch with our team to discuss your event requirements and receive a customized proposal
+              Get in touch with our team to discuss your medical conference requirements
             </p>
           </motion.div>
         </div>
@@ -120,7 +128,7 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="John Smith"
+                        placeholder="Dr. John Smith"
                         className="bg-white"
                       />
                     </div>
@@ -133,7 +141,7 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="john@company.com"
+                        placeholder="john@hospital.com"
                         className="bg-white"
                       />
                     </div>
@@ -154,12 +162,12 @@ export default function Contact() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Company Name
+                        Organization/Institution
                       </label>
                       <Input
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        placeholder="Your Company"
+                        value={formData.organization}
+                        onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                        placeholder="Hospital or Medical Association"
                         className="bg-white"
                       />
                     </div>
@@ -168,12 +176,12 @@ export default function Contact() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Event Type
+                        Conference Type
                       </label>
                       <Input
                         value={formData.eventType}
                         onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
-                        placeholder="e.g., Conference, Product Launch"
+                        placeholder="e.g., Medical Symposium, Congress"
                         className="bg-white"
                       />
                     </div>
@@ -184,7 +192,7 @@ export default function Contact() {
                       <Input
                         value={formData.attendees}
                         onChange={(e) => setFormData({ ...formData, attendees: e.target.value })}
-                        placeholder="e.g., 100-200"
+                        placeholder="e.g., 500-1000"
                         className="bg-white"
                       />
                     </div>
@@ -192,7 +200,7 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Preferred Event Date
+                      Preferred Conference Date
                     </label>
                     <Input
                       type="date"
@@ -204,13 +212,13 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Tell Us About Your Event *
+                      Conference Details *
                     </label>
                     <Textarea
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Please provide details about your event requirements, goals, and any specific needs..."
+                      placeholder="Please provide details about your medical conference, including medical specialty, key topics, special requirements, and any other relevant information..."
                       rows={6}
                       className="bg-white"
                     />
@@ -219,7 +227,7 @@ export default function Contact() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold py-6 rounded-lg text-lg"
+                    className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-6 rounded-lg text-lg"
                   >
                     {isSubmitting ? (
                       "Sending..."
@@ -261,8 +269,8 @@ export default function Contact() {
                     className="bg-gray-50 p-6 rounded-xl"
                   >
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <info.icon className="w-6 h-6 text-yellow-600" />
+                      <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <info.icon className="w-6 h-6 text-purple-600" />
                       </div>
                       <div>
                         <h3 className="font-bold text-gray-900 mb-2">{info.title}</h3>
@@ -277,18 +285,22 @@ export default function Contact() {
                 ))}
               </div>
 
-              {/* Map Placeholder */}
+              {/* Key Partners Section */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-gray-200 rounded-xl overflow-hidden aspect-video"
+                className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl"
               >
-                <img
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80"
-                  alt="London Office"
-                  className="w-full h-full object-cover"
-                />
+                <h3 className="font-bold text-gray-900 mb-4">Our Partners</h3>
+                <ul className="space-y-2">
+                  {keyPartners.map((partner, idx) => (
+                    <li key={idx} className="text-sm text-gray-700 flex items-start">
+                      <span className="text-purple-600 mr-2">•</span>
+                      {partner}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             </motion.div>
           </div>
@@ -304,17 +316,17 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Prefer to Talk?
+              Prefer to Talk Directly?
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Give us a call and speak directly with one of our event specialists
+              Contact our Managing Director for immediate assistance
             </p>
             <a
-              href="tel:+442012345678"
-              className="inline-flex items-center text-2xl font-bold text-yellow-600 hover:text-yellow-700 transition-colors"
+              href="mailto:rrahamim@gmail.com"
+              className="inline-flex items-center text-2xl font-bold text-purple-600 hover:text-purple-700 transition-colors"
             >
-              <Phone className="w-6 h-6 mr-3" />
-              +44 (0) 20 1234 5678
+              <Mail className="w-6 h-6 mr-3" />
+              rrahamim@gmail.com
             </a>
           </motion.div>
         </div>
