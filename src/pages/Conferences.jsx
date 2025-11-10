@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   Stethoscope, 
@@ -11,11 +11,18 @@ import {
   TrendingUp,
   Target
 } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { createPageUrl } from "@/utils";
 
 export default function Conferences() {
   const [selectedType, setSelectedType] = useState("medical");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+    if (type === 'corporate' || type === 'medical') {
+      setSelectedType(type);
+    }
+  }, []);
 
   const medicalServices = [
     {
@@ -124,27 +131,14 @@ export default function Conferences() {
               />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Medical & Corporate Conference Excellence
+              {selectedType === "medical" ? "Medical Conferences" : "Corporate Events"}
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Expert event management for medical conferences and corporate events worldwide
+              {selectedType === "medical" 
+                ? "Expert event management for medical conferences worldwide"
+                : "Creating impactful business events that drive results"}
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Conference Type Selector */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-md mx-auto px-6">
-          <Select value={selectedType} onValueChange={setSelectedType}>
-            <SelectTrigger className="w-full py-6 text-lg bg-white">
-              <SelectValue placeholder="Select conference type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="medical" className="text-lg py-3">Medical Conferences</SelectItem>
-              <SelectItem value="corporate" className="text-lg py-3">Corporate Events</SelectItem>
-            </SelectContent>
-          </Select>
         </div>
       </section>
 
@@ -160,7 +154,7 @@ export default function Conferences() {
                 className="text-center mb-16"
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                  Medical Conferences
+                  Specialized Medical Conference Services
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                   Falcon Events Limited is established as the unique destination for medical event management. With unmatched expertise in the clinical community across Asia and globally, we deliver exceptional conferences, symposiums, and training events that advance medical education.
@@ -299,7 +293,7 @@ export default function Conferences() {
               className="text-center mb-16"
             >
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Corporate Events
+                Corporate Event Solutions
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Creating impactful business events that drive results and leave lasting impressions
@@ -373,7 +367,7 @@ export default function Conferences() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Plan Your Next Conference?
+              Ready to Plan Your Next {selectedType === "medical" ? "Medical Conference" : "Corporate Event"}?
             </h2>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               Let us handle the complexities while you focus on achieving your event objectives.

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Menu, X, Mail, MapPin } from "lucide-react";
+import { Menu, X, Mail, MapPin, ChevronDown } from "lucide-react";
 
 export default function Layout({ children }) {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [conferencesOpen, setConferencesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +21,14 @@ export default function Layout({ children }) {
     { name: "Home", path: createPageUrl("Home") },
     { name: "About", path: createPageUrl("About") },
     { name: "Services", path: createPageUrl("Services") },
-    { name: "Conferences", path: createPageUrl("Conferences") },
+    { 
+      name: "Conferences", 
+      path: createPageUrl("Conferences"),
+      dropdown: [
+        { name: "Medical Conferences", path: createPageUrl("Conferences") + "?type=medical" },
+        { name: "Corporate Events", path: createPageUrl("Conferences") + "?type=corporate" }
+      ]
+    },
     { name: "Contact", path: createPageUrl("Contact") }
   ];
 
@@ -44,19 +52,54 @@ export default function Layout({ children }) {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`text-sm font-medium transition-colors ${
-                    location.pathname === item.path
-                      ? "text-purple-600"
-                      : isScrolled
-                      ? "text-gray-700 hover:text-purple-600"
-                      : "text-white hover:text-purple-300"
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                item.dropdown ? (
+                  <div 
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => setConferencesOpen(true)}
+                    onMouseLeave={() => setConferencesOpen(false)}
+                  >
+                    <button
+                      className={`text-sm font-medium transition-colors flex items-center ${
+                        location.pathname === item.path || location.pathname.includes("Conferences")
+                          ? "text-purple-600"
+                          : isScrolled
+                          ? "text-gray-700 hover:text-purple-600"
+                          : "text-white hover:text-purple-300"
+                      }`}
+                    >
+                      {item.name}
+                      <ChevronDown className={`ml-1 w-4 h-4 transition-transform ${conferencesOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    {conferencesOpen && (
+                      <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 border border-gray-100">
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.path}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={`text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? "text-purple-600"
+                        : isScrolled
+                        ? "text-gray-700 hover:text-purple-600"
+                        : "text-white hover:text-purple-300"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
 
@@ -79,18 +122,38 @@ export default function Layout({ children }) {
           <div className="lg:hidden bg-white border-t mt-3">
             <div className="px-6 py-4 space-y-3">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block text-sm font-medium transition-colors ${
-                    location.pathname === item.path
-                      ? "text-purple-600"
-                      : "text-gray-700 hover:text-purple-600"
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                item.dropdown ? (
+                  <div key={item.name}>
+                    <div className="text-sm font-medium text-gray-700 mb-2">
+                      {item.name}
+                    </div>
+                    <div className="pl-4 space-y-2">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block text-sm text-gray-600 hover:text-purple-600"
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? "text-purple-600"
+                        : "text-gray-700 hover:text-purple-600"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
           </div>
@@ -131,8 +194,13 @@ export default function Layout({ children }) {
                   </Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl("Conferences")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
-                    Conferences
+                  <Link to={createPageUrl("Conferences") + "?type=medical"} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
+                    Medical Conferences
+                  </Link>
+                </li>
+                <li>
+                  <Link to={createPageUrl("Conferences") + "?type=corporate"} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
+                    Corporate Events
                   </Link>
                 </li>
                 <li>
