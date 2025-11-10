@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   Stethoscope, 
@@ -11,9 +11,12 @@ import {
   TrendingUp,
   Target
 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { createPageUrl } from "@/utils";
 
 export default function Conferences() {
+  const [selectedType, setSelectedType] = useState("medical");
+
   const medicalServices = [
     {
       icon: Stethoscope,
@@ -130,182 +133,236 @@ export default function Conferences() {
         </div>
       </section>
 
-      {/* Medical Conferences Section */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Medical Conferences
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Falcon Events Limited is established as the unique destination for medical event management. With unmatched expertise in the clinical community across Asia and globally, we deliver exceptional conferences, symposiums, and training events that advance medical education.
-            </p>
-          </motion.div>
+      {/* Conference Type Selector */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-md mx-auto px-6">
+          <Select value={selectedType} onValueChange={setSelectedType}>
+            <SelectTrigger className="w-full py-6 text-lg bg-white">
+              <SelectValue placeholder="Select conference type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="medical" className="text-lg py-3">Medical Conferences</SelectItem>
+              <SelectItem value="corporate" className="text-lg py-3">Corporate Events</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {medicalServices.map((service, index) => (
+      {/* Medical Conferences Section */}
+      {selectedType === "medical" && (
+        <>
+          <section className="py-24">
+            <div className="max-w-7xl mx-auto px-6">
               <motion.div
-                key={index}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-16"
               >
-                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                  <service.icon className="w-7 h-7 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                  Medical Conferences
+                </h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Falcon Events Limited is established as the unique destination for medical event management. With unmatched expertise in the clinical community across Asia and globally, we deliver exceptional conferences, symposiums, and training events that advance medical education.
                 </p>
               </motion.div>
-            ))}
-          </div>
 
-          {/* Past Events */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              A Glimpse Into Our Past Events
-            </h3>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {pastEvents.map((event, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {event.title}
-                  </h3>
-                  <div className="flex items-center text-sm text-gray-600 mb-2">
-                    <Users className="w-4 h-4 mr-2 text-purple-600" />
-                    {event.attendees}
-                  </div>
-                  <div className="flex items-center text-sm text-gray-600 mb-4">
-                    <Globe className="w-4 h-4 mr-2 text-purple-600" />
-                    {event.location}
-                  </div>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {event.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Corporate Events Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Corporate Events
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Creating impactful business events that drive results and leave lasting impressions
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {corporateServices.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                  <service.icon className="w-7 h-7 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities Section */}
-      <section className="py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Our Conference Capabilities
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                We bring specialized expertise and infrastructure to support every aspect of medical and corporate conferences, from intimate workshops to large-scale international events.
-              </p>
-              <div className="space-y-3">
-                {capabilities.map((capability, index) => (
+              <div className="grid md:grid-cols-2 gap-8 mb-16">
+                {medicalServices.map((service, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                    className="flex items-start space-x-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                   >
-                    <CheckCircle className="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{capability}</span>
+                    <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                      <service.icon className="w-7 h-7 text-purple-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
+
+              {/* Past Events */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-center mb-12"
+              >
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  A Glimpse Into Our Past Events
+                </h3>
+              </motion.div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {pastEvents.map((event, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                    className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                  >
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {event.title}
+                      </h3>
+                      <div className="flex items-center text-sm text-gray-600 mb-2">
+                        <Users className="w-4 h-4 mr-2 text-purple-600" />
+                        {event.attendees}
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600 mb-4">
+                        <Globe className="w-4 h-4 mr-2 text-purple-600" />
+                        {event.location}
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {event.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Capabilities Section */}
+          <section className="py-24 bg-gray-50">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    Our Medical Conference Capabilities
+                  </h2>
+                  <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                    We bring specialized expertise and infrastructure to support every aspect of medical conferences, from intimate workshops to large-scale international symposiums.
+                  </p>
+                  <div className="space-y-3">
+                    {capabilities.map((capability, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + index * 0.05 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <CheckCircle className="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{capability}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="relative"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80"
+                    alt="Conference"
+                    className="rounded-2xl shadow-2xl"
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* Corporate Events Section */}
+      {selectedType === "corporate" && (
+        <section className="py-24">
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Corporate Events
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Creating impactful business events that drive results and leave lasting impressions
+              </p>
             </motion.div>
 
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {corporateServices.map((service, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gray-50 p-8 rounded-2xl hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                    <service.icon className="w-7 h-7 text-purple-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mt-16 bg-white p-12 rounded-2xl shadow-xl"
             >
-              <img
-                src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80"
-                alt="Conference"
-                className="rounded-2xl shadow-2xl"
-              />
+              <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+                Why Choose Falcon Events for Corporate Events
+              </h3>
+              <div className="grid md:grid-cols-2 gap-8 mt-8">
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">Strategic Partnership</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    We become an extension of your team, understanding your business objectives and brand values to deliver events that align with your corporate goals.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">Seamless Execution</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    From initial concept to post-event analysis, our experienced team manages every detail with precision and professionalism.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">Innovative Solutions</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    We leverage cutting-edge technology and creative approaches to deliver memorable experiences that engage and inspire.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">Global Reach</h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    With international event capabilities and local expertise, we can execute corporate events anywhere in the world.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-[#6B21A8] to-[#4C1D95] text-white">

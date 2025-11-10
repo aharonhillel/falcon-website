@@ -80,7 +80,7 @@ export default function About() {
                 Whether it is a small meeting with dozens of people or a large meeting with thousands of people, Taixi Congress can provide attendees with a high-quality and personalized meeting experience.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Since our establishment in 2004, we have successfully organized many medical conferences in China and across Asia including Hong Kong, Macau, Thailand, Vietnam, Philippines, and beyond. We work with world-leading medical experts in their fields and Nobel laureate guest speakers to ensure our medical conferences are at the highest scientific level.
+                Since our establishment in 2008, we have successfully organized many medical conferences in China and across Asia including Hong Kong, Macau, Thailand, Vietnam, Philippines, and beyond. We work with world-leading medical experts in their fields and Nobel laureate guest speakers to ensure our medical conferences are at the highest scientific level.
               </p>
             </motion.div>
 

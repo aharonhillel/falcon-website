@@ -4,7 +4,9 @@ import { Mail, MapPin, Clock, Send, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { base44 } from "@/api/base44Client";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -23,7 +25,26 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    setTimeout(() => {
+    try {
+      await base44.integrations.Core.SendEmail({
+        to: "rrahamim@gmail.com",
+        subject: `New Conference Inquiry from ${formData.name}`,
+        body: `
+          New conference inquiry received:
+          
+          Name: ${formData.name}
+          Email: ${formData.email}
+          Phone: ${formData.phone || 'Not provided'}
+          Organization: ${formData.organization || 'Not provided'}
+          Conference Type: ${formData.eventType}
+          Expected Attendees: ${formData.attendees || 'Not specified'}
+          Preferred Date: ${formData.date || 'Not specified'}
+          
+          Message:
+          ${formData.message}
+        `
+      });
+      
       toast.success("Thank you for your inquiry! We'll be in touch within 24 hours.");
       setFormData({
         name: "",
@@ -35,8 +56,11 @@ export default function Contact() {
         date: "",
         message: ""
       });
+    } catch (error) {
+      toast.error("Failed to send message. Please try again or email us directly.");
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [
@@ -174,14 +198,28 @@ export default function Contact() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Conference Type
+                        Conference Type *
                       </label>
-                      <Input
+                      <Select
+                        required
                         value={formData.eventType}
-                        onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
-                        placeholder="e.g., Medical Symposium, Congress"
-                        className="bg-white"
-                      />
+                        onValueChange={(value) => setFormData({ ...formData, eventType: value })}
+                      >
+                        <SelectTrigger className="bg-white">
+                          <SelectValue placeholder="Select conference type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Medical Symposium">Medical Symposium</SelectItem>
+                          <SelectItem value="Medical Congress">Medical Congress</SelectItem>
+                          <SelectItem value="Medical Workshop">Medical Workshop</SelectItem>
+                          <SelectItem value="CME Conference">CME Conference</SelectItem>
+                          <SelectItem value="Corporate Meeting">Corporate Meeting</SelectItem>
+                          <SelectItem value="Product Launch">Product Launch</SelectItem>
+                          <SelectItem value="Annual General Meeting">Annual General Meeting</SelectItem>
+                          <SelectItem value="Leadership Summit">Leadership Summit</SelectItem>
+                          <SelectItem value="Other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
