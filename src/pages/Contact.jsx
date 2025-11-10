@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, User } from "lucide-react";
+import { Mail, MapPin, Clock, Send, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -48,12 +48,12 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      details: ["rrahamim@gmail.com", "info@falconevents.co.uk"]
+      details: ["rrahamim@gmail.com"]
     },
     {
       icon: MapPin,
       title: "Office Location",
-      details: ["Shanghai, China", "London, United Kingdom"]
+      details: ["Hong Kong"]
     },
     {
       icon: Clock,
@@ -80,11 +80,18 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <div className="flex justify-center mb-6">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
+                alt="Falcon Events Logo"
+                className="h-32 w-auto"
+              />
+            </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Let's Organize Your Conference
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Get in touch with our team to discuss your medical conference requirements
+              Get in touch with our team to discuss your conference requirements
             </p>
           </motion.div>
         </div>
@@ -147,7 +154,7 @@ export default function Contact() {
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+44 20 1234 5678"
+                        placeholder="+852 1234 5678"
                         className="bg-white"
                       />
                     </div>
@@ -209,7 +216,7 @@ export default function Contact() {
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Please provide details about your medical conference, including medical specialty, key topics, special requirements, and any other relevant information..."
+                      placeholder="Please provide details about your conference, including specialty, key topics, special requirements, and any other relevant information..."
                       rows={6}
                       className="bg-white"
                     />

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Award, Heart, Target, Users, CheckCircle } from "lucide-react";
+import { Award, Heart, Target, Users } from "lucide-react";
 
 export default function About() {
   const values = [
@@ -26,15 +26,6 @@ export default function About() {
     }
   ];
 
-  const achievements = [
-    "Over 300 medical conferences organized successfully",
-    "30,000+ medical professionals reached through CODHy conferences",
-    "Partnerships with leading pharmaceutical companies worldwide",
-    "17 years of CODHy conference excellence",
-    "International Congress of Endocrinology (ICE) with 8,000 participants",
-    "Nobel Laureates as guest speakers"
-  ];
-
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -53,6 +44,13 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <div className="flex justify-center mb-6">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
+                alt="Falcon Events Logo"
+                className="h-32 w-auto"
+              />
+            </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               About Falcon Events Limited
             </h1>
@@ -134,41 +132,6 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements Section */}
-      <section className="py-24 bg-gradient-to-br from-[#6B21A8] to-[#4C1D95] text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Achievements
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              A track record of excellence in medical event management
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {achievements.map((achievement, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-start space-x-3 bg-white/10 backdrop-blur-sm p-6 rounded-xl"
-              >
-                <CheckCircle className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-0.5" />
-                <span className="text-lg">{achievement}</span>
               </motion.div>
             ))}
           </div>

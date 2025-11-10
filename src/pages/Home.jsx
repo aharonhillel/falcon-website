@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
@@ -66,6 +67,13 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <div className="flex justify-center mb-8">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
+                alt="Falcon Events Logo"
+                className="h-40 w-auto"
+              />
+            </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               Professional Medical<br />Event Organizer
             </h1>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, X, Mail, MapPin } from "lucide-react";
 
 export default function Layout({ children }) {
   const location = useLocation();
@@ -20,8 +20,7 @@ export default function Layout({ children }) {
     { name: "Home", path: createPageUrl("Home") },
     { name: "About", path: createPageUrl("About") },
     { name: "Services", path: createPageUrl("Services") },
-    { name: "Medical Conferences", path: createPageUrl("MedicalConferences") },
-    { name: "Corporate Events", path: createPageUrl("CorporateEvents") },
+    { name: "Conferences", path: createPageUrl("Conferences") },
     { name: "Contact", path: createPageUrl("Contact") }
   ];
 
@@ -35,22 +34,11 @@ export default function Layout({ children }) {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to={createPageUrl("Home")} className="flex items-center space-x-3">
-              <div className="relative">
-                <svg width="40" height="40" viewBox="0 0 100 100" className="text-purple-600">
-                  <path d="M30,70 Q50,20 70,70" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round"/>
-                  <path d="M40,60 L50,40 L60,60" stroke={isScrolled ? "#6B21A8" : "#fff"} strokeWidth="6" fill="none" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <div>
-                <span className={`text-xl font-bold transition-colors ${
-                  isScrolled ? "text-gray-900" : "text-white"
-                }`}>
-                  Falcon Events
-                </span>
-                <div className={`text-xs ${isScrolled ? "text-gray-600" : "text-gray-300"}`}>
-                  Professional Medical Event Organizer
-                </div>
-              </div>
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
+                alt="Falcon Events Logo"
+                className={`h-12 w-auto transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`}
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -118,13 +106,11 @@ export default function Layout({ children }) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
             <div>
-              <div className="flex items-center space-x-3 mb-6">
-                <svg width="40" height="40" viewBox="0 0 100 100" className="text-purple-400">
-                  <path d="M30,70 Q50,20 70,70" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round"/>
-                  <path d="M40,60 L50,40 L60,60" stroke="#fff" strokeWidth="6" fill="none" strokeLinecap="round"/>
-                </svg>
-                <span className="text-xl font-bold">Falcon Events</span>
-              </div>
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
+                alt="Falcon Events Logo"
+                className="h-16 w-auto mb-6 brightness-0 invert"
+              />
               <p className="text-gray-300 text-sm leading-relaxed">
                 Professional Medical Event Organizer creating exceptional conferences through expert management and planning.
               </p>
@@ -145,13 +131,13 @@ export default function Layout({ children }) {
                   </Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl("MedicalConferences")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
-                    Medical Conferences
+                  <Link to={createPageUrl("Conferences")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
+                    Conferences
                   </Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl("CorporateEvents")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
-                    Corporate Events
+                  <Link to={createPageUrl("Contact")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
+                    Contact
                   </Link>
                 </li>
               </ul>
@@ -175,7 +161,7 @@ export default function Layout({ children }) {
               <ul className="space-y-4">
                 <li className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-300">Shanghai, China & London, UK</span>
+                  <span className="text-sm text-gray-300">Hong Kong</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
