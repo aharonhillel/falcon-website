@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
@@ -130,7 +131,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Award, number: "500+", label: "Events Delivered" },
+              { icon: Award, number: "300+", label: "Events Delivered" },
               { icon: Users, number: "50K+", label: "Attendees Managed" },
               { icon: Target, number: "98%", label: "Client Satisfaction" },
               { icon: Sparkles, number: "15+", label: "Years Experience" }
