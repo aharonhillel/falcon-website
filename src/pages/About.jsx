@@ -3,27 +3,6 @@ import { motion } from "framer-motion";
 import { Award, Heart, Target, Users, CheckCircle } from "lucide-react";
 
 export default function About() {
-  const team = [
-    {
-      name: "Ronen Rahamim",
-      role: "Managing Director / CEO",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-      bio: "Leading Falcon Group's mission to deliver world-class medical conferences and events."
-    },
-    {
-      name: "Prof. Itamar Raz",
-      role: "CODHy Conference Co-Chair",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80",
-      bio: "Medical Director at the Diabetes Medical Center in Tel Aviv and Head of the Israeli Council of Diabetes."
-    },
-    {
-      name: "Prof. Ning Guang",
-      role: "CODHy Conference Co-Chair",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-      bio: "Academician of Chinese Academy of Engineering and President of Ruijin Hospital, Shanghai Jiaotong University."
-    }
-  ];
-
   const values = [
     {
       icon: Target,
@@ -155,50 +134,6 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Leadership Team
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Experienced leaders dedicated to delivering world-class medical conferences
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="relative overflow-hidden rounded-2xl mb-4 aspect-square">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-purple-600 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
           </div>
