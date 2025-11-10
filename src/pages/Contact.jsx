@@ -62,15 +62,6 @@ export default function Contact() {
     }
   ];
 
-  const keyPartners = [
-    "Chinese Medical Doctor Association (CMDA)",
-    "Chinese Society of Endocrinology (CSE)",
-    "Chinese Medical Association (CEA)",
-    "International Society of Endocrinology (ISE)",
-    "Chinese Academy of Engineering (CAE)",
-    "Ruijin Hospital, Shanghai Jiaotong University"
-  ];
-
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -284,24 +275,6 @@ export default function Contact() {
                   </motion.div>
                 ))}
               </div>
-
-              {/* Key Partners Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl"
-              >
-                <h3 className="font-bold text-gray-900 mb-4">Our Partners</h3>
-                <ul className="space-y-2">
-                  {keyPartners.map((partner, idx) => (
-                    <li key={idx} className="text-sm text-gray-700 flex items-start">
-                      <span className="text-purple-600 mr-2">•</span>
-                      {partner}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
             </motion.div>
           </div>
         </div>

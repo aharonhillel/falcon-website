@@ -34,15 +34,23 @@ export default function Layout({ children }) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to={createPageUrl("Home")} className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">F</span>
+            <Link to={createPageUrl("Home")} className="flex items-center space-x-3">
+              <div className="relative">
+                <svg width="40" height="40" viewBox="0 0 100 100" className="text-purple-600">
+                  <path d="M30,70 Q50,20 70,70" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round"/>
+                  <path d="M40,60 L50,40 L60,60" stroke={isScrolled ? "#6B21A8" : "#fff"} strokeWidth="6" fill="none" strokeLinecap="round"/>
+                </svg>
               </div>
-              <span className={`text-xl font-bold transition-colors ${
-                isScrolled ? "text-gray-900" : "text-white"
-              }`}>
-                Falcon Events Limited
-              </span>
+              <div>
+                <span className={`text-xl font-bold transition-colors ${
+                  isScrolled ? "text-gray-900" : "text-white"
+                }`}>
+                  Falcon Events
+                </span>
+                <div className={`text-xs ${isScrolled ? "text-gray-600" : "text-gray-300"}`}>
+                  Professional Medical Event Organizer
+                </div>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
@@ -53,10 +61,10 @@ export default function Layout({ children }) {
                   to={item.path}
                   className={`text-sm font-medium transition-colors ${
                     location.pathname === item.path
-                      ? "text-yellow-500"
+                      ? "text-purple-600"
                       : isScrolled
-                      ? "text-gray-700 hover:text-yellow-500"
-                      : "text-white hover:text-yellow-400"
+                      ? "text-gray-700 hover:text-purple-600"
+                      : "text-white hover:text-purple-300"
                   }`}
                 >
                   {item.name}
@@ -89,8 +97,8 @@ export default function Layout({ children }) {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block text-sm font-medium transition-colors ${
                     location.pathname === item.path
-                      ? "text-yellow-500"
-                      : "text-gray-700 hover:text-yellow-500"
+                      ? "text-purple-600"
+                      : "text-gray-700 hover:text-purple-600"
                   }`}
                 >
                   {item.name}
@@ -105,19 +113,20 @@ export default function Layout({ children }) {
       <main>{children}</main>
 
       {/* Footer */}
-      <footer className="bg-[#0A1F3D] text-white">
+      <footer className="bg-[#1F2937] text-white">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
             <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">F</span>
-                </div>
+              <div className="flex items-center space-x-3 mb-6">
+                <svg width="40" height="40" viewBox="0 0 100 100" className="text-purple-400">
+                  <path d="M30,70 Q50,20 70,70" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round"/>
+                  <path d="M40,60 L50,40 L60,60" stroke="#fff" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                </svg>
                 <span className="text-xl font-bold">Falcon Events</span>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Creating unforgettable experiences through exceptional event management and planning.
+                Professional Medical Event Organizer creating exceptional conferences through expert management and planning.
               </p>
             </div>
 
@@ -126,22 +135,22 @@ export default function Layout({ children }) {
               <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to={createPageUrl("About")} className="text-gray-300 hover:text-yellow-400 transition-colors text-sm">
+                  <Link to={createPageUrl("About")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl("Services")} className="text-gray-300 hover:text-yellow-400 transition-colors text-sm">
+                  <Link to={createPageUrl("Services")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl("MedicalConferences")} className="text-gray-300 hover:text-yellow-400 transition-colors text-sm">
+                  <Link to={createPageUrl("MedicalConferences")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
                     Medical Conferences
                   </Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl("CorporateEvents")} className="text-gray-300 hover:text-yellow-400 transition-colors text-sm">
+                  <Link to={createPageUrl("CorporateEvents")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
                     Corporate Events
                   </Link>
                 </li>
@@ -152,11 +161,11 @@ export default function Layout({ children }) {
             <div>
               <h3 className="text-lg font-semibold mb-6">Services</h3>
               <ul className="space-y-3 text-sm text-gray-300">
-                <li>Venue Sourcing</li>
-                <li>Event Management</li>
+                <li>Conference Planning</li>
+                <li>Faculty Management</li>
                 <li>A/V & Production</li>
-                <li>Delegate Management</li>
-                <li>Branding & Design</li>
+                <li>Exhibition Management</li>
+                <li>CME Accreditation</li>
               </ul>
             </div>
 
@@ -165,16 +174,12 @@ export default function Layout({ children }) {
               <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
               <ul className="space-y-4">
                 <li className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-300">London, United Kingdom</span>
+                  <MapPin className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-gray-300">Shanghai, China & London, UK</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0" />
-                  <span className="text-sm text-gray-300">+44 (0) 20 1234 5678</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0" />
-                  <span className="text-sm text-gray-300">hello@falconevents.co.uk</span>
+                  <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                  <span className="text-sm text-gray-300">rrahamim@gmail.com</span>
                 </li>
               </ul>
             </div>

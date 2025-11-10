@@ -27,45 +27,6 @@ export default function Home() {
     }, 1000);
   };
 
-  const portfolioItems = [
-    {
-      title: "CODHy Asia Pacific",
-      client: "International Conference",
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-      category: "Medical"
-    },
-    {
-      title: "ICE Beijing 2016",
-      client: "International Congress of Endocrinology",
-      image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80",
-      category: "Medical"
-    },
-    {
-      title: "CMDA Conference",
-      client: "Chinese Medical Doctor Association",
-      image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80",
-      category: "Medical"
-    },
-    {
-      title: "CODHy World Congress",
-      client: "Global Conference",
-      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80",
-      category: "Medical"
-    },
-    {
-      title: "COPHY Congress",
-      client: "Controversies in Ophthalmology",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-      category: "Medical"
-    },
-    {
-      title: "DIP Symposium",
-      client: "Diabetes & Pregnancy",
-      image: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80",
-      category: "Medical"
-    }
-  ];
-
   const services = [
     {
       title: "Conference Planning",
@@ -128,10 +89,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Award, number: "300+", label: "Medical Conferences" },
-              { icon: Users, number: "30K+", label: "Medical Professionals" },
+              { icon: Award, number: "100+", label: "Medical Conferences" },
+              { icon: Users, number: "100K+", label: "Medical Professionals" },
               { icon: Target, number: "70+", label: "Countries Reached" },
-              { icon: Globe, number: "17+", label: "Years of CODHy" }
+              { icon: Globe, number: "18+", label: "Years of Experience" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -150,55 +111,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Featured Medical Conferences
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore our portfolio of world-class medical conferences and academic events
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="text-sm font-medium text-yellow-400 mb-2">{item.category}</div>
-                    <h3 className="text-xl font-bold mb-1">{item.title}</h3>
-                    <p className="text-gray-300">{item.client}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -222,7 +136,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{service.description}</p>
