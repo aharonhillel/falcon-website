@@ -6,7 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { base44 } from "@/api/base44Client";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -24,27 +23,29 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
     try {
-      await base44.integrations.Core.SendEmail({
-        to: "rrahamim@gmail.com",
-        subject: `New Conference Inquiry from ${formData.name}`,
-        body: `
-          New conference inquiry received:
-          
-          Name: ${formData.name}
-          Email: ${formData.email}
-          Phone: ${formData.phone || 'Not provided'}
-          Organization: ${formData.organization || 'Not provided'}
-          Conference Type: ${formData.eventType}
-          Expected Attendees: ${formData.attendees || 'Not specified'}
-          Preferred Date: ${formData.date || 'Not specified'}
-          
-          Message:
-          ${formData.message}
-        `
+      const res = await fetch("https://formspree.io/f/mqawayyz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New Conference Inquiry from ${formData.name}`,
+          source: "Contact Page",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || "",
+          organization: formData.organization || "",
+          eventType: formData.eventType || "",
+          attendees: formData.attendees || "",
+          date: formData.date || "",
+          message: formData.message,
+        }),
       });
-      
+
+      if (!res.ok) throw new Error("Form submission failed");
+
       toast.success("Thank you for your inquiry! We'll be in touch within 24 hours.");
       setFormData({
         name: "",
@@ -54,7 +55,7 @@ export default function Contact() {
         eventType: "",
         attendees: "",
         date: "",
-        message: ""
+        message: "",
       });
     } catch (error) {
       toast.error("Failed to send message. Please try again or email us directly.");
@@ -104,13 +105,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex justify-center mb-6">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
-                alt="Falcon Events Logo"
-                className="h-32 w-auto"
-              />
-            </div>
+
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Let's Organize Your Conference
             </h1>

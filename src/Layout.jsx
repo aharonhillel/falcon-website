@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Menu, X, Mail, MapPin, ChevronDown } from "lucide-react";
+import falconLogo from "@/assets/falcon-logo.png";
 
 export default function Layout({ children }) {
   const location = useLocation();
@@ -43,7 +44,7 @@ export default function Layout({ children }) {
             {/* Logo */}
             <Link to={createPageUrl("Home")} className="flex items-center space-x-3">
               <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
+                src={falconLogo}
                 alt="Falcon Events Logo"
                 className={`h-12 w-auto transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`}
               />
@@ -62,7 +63,7 @@ export default function Layout({ children }) {
                     <button
                       className={`text-sm font-medium transition-colors flex items-center ${
                         location.pathname === item.path || location.pathname.includes("Conferences")
-                          ? "text-purple-600"
+                          ? (isScrolled ? "text-purple-600" : "text-white")
                           : isScrolled
                           ? "text-gray-700 hover:text-purple-600"
                           : "text-white hover:text-purple-300"
@@ -72,7 +73,7 @@ export default function Layout({ children }) {
                       <ChevronDown className={`ml-1 w-4 h-4 transition-transform ${conferencesOpen ? 'rotate-180' : ''}`} />
                     </button>
                     {conferencesOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 border border-gray-100">
+                      <div className="absolute top-full left-0 w-56 bg-white rounded-lg shadow-xl py-2 border border-gray-100">
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.name}
@@ -91,7 +92,7 @@ export default function Layout({ children }) {
                     to={item.path}
                     className={`text-sm font-medium transition-colors ${
                       location.pathname === item.path
-                        ? "text-purple-600"
+                        ? (isScrolled ? "text-purple-600" : "text-white")
                         : isScrolled
                         ? "text-gray-700 hover:text-purple-600"
                         : "text-white hover:text-purple-300"
@@ -119,7 +120,7 @@ export default function Layout({ children }) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t mt-3">
+          <div className="lg:hidden bg-white border-t">
             <div className="px-6 py-4 space-y-3">
               {navigation.map((item) => (
                 item.dropdown ? (
@@ -170,7 +171,7 @@ export default function Layout({ children }) {
             {/* Company Info */}
             <div>
               <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
+                src={falconLogo}
                 alt="Falcon Events Logo"
                 className="h-16 w-auto mb-6 brightness-0 invert"
               />

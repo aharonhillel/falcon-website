@@ -44,13 +44,7 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex justify-center mb-6">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6912344b695266802e684b74/749f925e0_Screenshot2025-11-11at015649.png"
-                alt="Falcon Events Logo"
-                className="h-32 w-auto"
-              />
-            </div>
+
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               About Falcon Events Limited
             </h1>
