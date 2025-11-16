@@ -64,7 +64,7 @@ export default function Layout({ children }) {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-lg py-3" : "bg-transparent py-5"
+        isScrolled ? "bg-white shadow-lg py-3": "bg-transparent py-5"
       }`}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between">
