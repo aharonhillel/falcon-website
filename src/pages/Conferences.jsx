@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
   Stethoscope, 
@@ -15,14 +16,17 @@ import { createPageUrl } from "@/utils";
 
 export default function Conferences() {
   const [selectedType, setSelectedType] = useState("medical");
+  const location = useLocation();
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const type = urlParams.get('type');
-    if (type === 'corporate' || type === 'medical') {
+    const urlParams = new URLSearchParams(location.search);
+    const type = urlParams.get("type");
+    if (type === "corporate" || type === "medical") {
       setSelectedType(type);
+    } else {
+      setSelectedType("medical");
     }
-  }, []);
+  }, [location.search]);
 
   const medicalServices = [
     {

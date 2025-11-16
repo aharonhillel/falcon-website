@@ -53,8 +53,8 @@ export default function Layout({ children }) {
       name: "Conferences", 
       path: createPageUrl("Conferences"),
       dropdown: [
-        { name: "Medical Conferences", path: createPageUrl("Conferences") + "?type=medical" },
-        { name: "Corporate Events", path: createPageUrl("Conferences") + "?type=corporate" }
+        { name: "Medical Conferences", path: createPageUrl("MedicalConferences") },
+        { name: "Corporate Events", path: createPageUrl("CorporateEvents") }
       ]
     },
     { name: "Contact", path: createPageUrl("Contact") }
@@ -89,7 +89,9 @@ export default function Layout({ children }) {
                   >
                     <button
                       className={`text-sm font-medium transition-colors flex items-center ${
-                        location.pathname === item.path || location.pathname.includes("Conferences")
+                        (location.pathname.startsWith(createPageUrl("Conferences")) ||
+                         location.pathname.startsWith(createPageUrl("MedicalConferences")) ||
+                         location.pathname.startsWith(createPageUrl("CorporateEvents")))
                           ? (isScrolled ? "text-purple-600" : "text-white")
                           : isScrolled
                           ? "text-gray-700 hover:text-purple-600"
@@ -222,12 +224,12 @@ export default function Layout({ children }) {
                   </Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl("Conferences") + "?type=medical"} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
+                  <Link to={createPageUrl("MedicalConferences")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
                     Medical Conferences
                   </Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl("Conferences") + "?type=corporate"} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
+                  <Link to={createPageUrl("CorporateEvents")} className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
                     Corporate Events
                   </Link>
                 </li>
