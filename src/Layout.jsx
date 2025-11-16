@@ -269,7 +269,7 @@ export default function Layout({ children }) {
 
           <div className="border-t border-gray-700 mt-12 pt-8 text-center">
             <p className="text-sm text-gray-400">
-              © 2024 Falcon Events Limited. All rights reserved.
+              © {new Date().getFullYear()} Falcon Events Limited. All rights reserved.
             </p>
           </div>
         </div>
