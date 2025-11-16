@@ -87,7 +87,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Professional Conferences<br />& Event Organizer
+              Professional Conferences<br />& Events Organizer
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
               Presenting the highest level of academic conferences with world-leading medical experts and Nobel laureates
