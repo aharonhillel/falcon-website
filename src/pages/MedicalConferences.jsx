@@ -90,7 +90,7 @@ export default function MedicalConferences() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Expert Organizers for Premier Medical Conferences
+              Expert Organizers for Medical Conferences
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Specialized event management for healthcare professionals, medical associations, and pharmaceutical companies

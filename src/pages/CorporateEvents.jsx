@@ -38,7 +38,7 @@ export default function CorporateEvents() {
   ];
 
   const successMetrics = [
-    { metric: "98%", label: "Client Satisfaction" },
+    { metric: "100%", label: "Client Satisfaction" },
     { metric: "100+", label: "Corporate Events" },
     { metric: "100K+", label: "Attendees Managed" },
     { metric: "50+", label: "International Clients" }
@@ -82,7 +82,7 @@ export default function CorporateEvents() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Exceptional Corporate Event Planning
+              Corporate Event Planning
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Creating impactful business events that drive results and leave lasting impressions

@@ -73,7 +73,7 @@ export default function Layout({ children }) {
               <img 
                 src={falconLogo}
                 alt="Falcon Events Logo"
-                className={`h-12 w-auto transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`}
+                className={`h-16 w-auto transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`}
               />
             </Link>
 
@@ -202,7 +202,7 @@ export default function Layout({ children }) {
               <img 
                 src={falconLogo}
                 alt="Falcon Events Logo"
-                className="h-16 w-auto mb-6 brightness-0 invert"
+                className="h-20 w-auto mb-6 brightness-0 invert"
               />
               <p className="text-gray-300 text-sm leading-relaxed">
                 Professional Medical Event Organizer creating exceptional conferences through expert management and planning.
