@@ -18,6 +18,33 @@ export default function Layout({ children }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Global SEO for all pages (same title/description)
+  useEffect(() => {
+    const title = "Falcon Events";
+    const description =
+      "Falcon Events is a professional medical and corporate conference organizer based in Hong Kong, delivering world-class academic events, production, and faculty management.";
+
+    document.title = title;
+
+    const upsertMeta = (attr, key, value) => {
+      let el = document.querySelector(`meta[${attr}='${key}']`);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", value);
+    };
+
+    upsertMeta("name", "description", description);
+    upsertMeta("name", "application-name", title);
+    upsertMeta("property", "og:site_name", title);
+    upsertMeta("property", "og:title", title);
+    upsertMeta("property", "og:description", description);
+    upsertMeta("name", "twitter:title", title);
+    upsertMeta("name", "twitter:description", description);
+  }, [location.pathname]);
+
   const navigation = [
     { name: "Home", path: createPageUrl("Home") },
     { name: "About", path: createPageUrl("About") },
